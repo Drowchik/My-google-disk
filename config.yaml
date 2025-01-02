@@ -1,10 +1,19 @@
 database:
   user: postgres
   password: postgres
-  host: localhost
+  host: db
   port: 5432
   db: google_disk
 
-jwt:
-  algorithm: HS256 
-  secret_key: 8zS7ksglywomSBHtEs2G94tiNf6UkhPIEqvjC71tlUA=
+celery:
+  broker: redis://redis:6379/0
+  password: bkxx xcvv teze ismz
+  email: dragonyt1990@gmail.com
+  smtp_host: smtp.gmail.com
+  smtp_port: 465
+
+selectel:
+  aws_access_key_id: e4da1dadd45e49c0b505218da6551ef9
+  aws_secret_access_key: 4f396210b3124acb90907a3bd5d7eb22
+  endpoint_url: https://s3.storage.selcloud.ru
+  bucket_name: my-google-disk

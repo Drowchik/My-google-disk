@@ -6,3 +6,11 @@ class SUserRegister(BaseModel):
     name: str
     email: EmailStr
     password: str
+
+    class Config:
+        orm_mode = True
+
+
+class SUserOutput(BaseModel):
+    name: str
+    email: str

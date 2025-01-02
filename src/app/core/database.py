@@ -1,3 +1,6 @@
+from functools import lru_cache
+from fastapi import Request
+from src.app.services.s3 import S3Service
 from src.app.core.config import settings
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
 
@@ -24,9 +27,25 @@ async_engine = create_async_engine(
 )
 
 async_session_maker = async_sessionmaker(
-    bind=async_engine, expire_on_commit=False)
+    bind=async_engine,
+    expire_on_commit=False
+)
 
 
 async def get_db() -> AsyncSession:
     async with async_session_maker() as session:
         yield session
+
+
+def get_auth_service(request: Request):
+    return request.app.state.auth_service
+
+
+@lru_cache
+def get_s3_service() -> S3Service:
+    return S3Service(
+        bucket_name=settings.bucket_name,
+        aws_access_key=settings.aws_access_key_id,
+        aws_secret_key=settings.aws_secret_access_key,
+        endpoint_url=settings.endpoint_url
+    )

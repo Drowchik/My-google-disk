@@ -11,6 +11,15 @@ fastapi = "^0.115.3"
 uvicorn = "^0.32.0"
 dynaconf = "^3.2.6"
 sqlalchemy = "^2.0.36"
+celery = "^5.4.0"
+pydantic-settings = "^2.7.1"
+pydantic = {extras = ["email"], version = "^2.10.4"}
+alembic = "^1.14.0"
+asyncpg = "^0.30.0"
+redis = {extras = ["asyncio"], version = "^5.2.1"}
+passlib = "^1.7.4"
+boto3 = "^1.35.91"
+python-multipart = "^0.0.20"
 
 
 [build-system]

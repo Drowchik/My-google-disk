@@ -21,14 +21,28 @@ class Settings(BaseSettings):
     db_dsn: str
     app_name: str
     timezone: str
-    secret_key: str
-    algorithm: str
+    celery_broker: str
+    email: str
+    password: str
+    smtp_host: str
+    smtp_port: int
+    aws_access_key_id: str
+    aws_secret_access_key: str
+    endpoint_url: str
+    bucket_name: str
 
 
 settings = Settings(
     db_dsn=str(_db_dsn),
     app_name="My Google Disk",
     timezone=_project_timezone,
-    secret_key=_settings.jwt.secret_key,
-    algorithm=_settings.jwt.algorithm
+    celery_broker=_settings.celery.broker,
+    email=_settings.celery.email,
+    password=_settings.celery.password,
+    smtp_host=_settings.celery.smtp_host,
+    smtp_port=_settings.celery.smtp_port,
+    aws_access_key_id=_settings.selectel.aws_access_key_id,
+    aws_secret_access_key=_settings.selectel.aws_secret_access_key,
+    endpoint_url=_settings.selectel.endpoint_url,
+    bucket_name=_settings.selectel.bucket_name,
 )
