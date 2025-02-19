@@ -5,7 +5,7 @@ from fastapi import HTTPException, Request, Response
 
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from src.app.models import User
+from src.app.models import Folder, User
 from sqlalchemy import select
 from src.app.schemas.shemas import SUserRegister
 from passlib.context import CryptContext
@@ -60,6 +60,11 @@ class UserService:
 
     async def get_user_by_filter(self, **kwargs) -> User | None:
         result = await self.db.execute(select(User).filter_by(**kwargs))
+        return result.scalar()
+
+    async def get_by_path(self, path: str):
+        print(path, "PATH")
+        result = await self.db.execute(select(Folder).filter(Folder.name == path))
         return result.scalar()
 
     async def create_user(self, email, name: str, hashed_password: str) -> User:

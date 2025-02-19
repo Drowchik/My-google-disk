@@ -1,12 +1,12 @@
 database:
   user: postgres
   password: postgres
-  host: db
+  host: localhost
   port: 5432
   db: google_disk
 
 celery:
-  broker: redis://redis:6379/0
+  broker: redis://localhost:6379/0
   password: bkxx xcvv teze ismz
   email: dragonyt1990@gmail.com
   smtp_host: smtp.gmail.com
